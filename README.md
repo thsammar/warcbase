@@ -52,17 +52,22 @@ This can be done in three steps:
 
 First, create an HBase table with pre-partitions.
 
+```
 $ create 'TableName', {NAME =>'content'},{NAME = > 'type'}, {SPLITS => ['first boundary','second boundary', ...]}
-
+```
 Second, prepare the data in HBase’s internal storage format (HFile) using A MapReduce job that uses FileOutputFormat
 as an output format. The mapper class has to be implemented by the programmer, the map output key is the row key of the HBase table, and the value is a Put statement. The reducer class handled by HBase, HFileOutputFormat has a convenience function called configureIncrementalLoad(), which sets up Hadoop’s TotalOrderPartitioner class based on the table boundaries, which represent the number
 of pre-assigned splits when the table was created.
 
+```
 $ hadoop jar target/warcbase-0.1.0-SNAPSHOT-fatjar.jar org.warcbase.cwi.bulkloading -in inputDir  -out outDir -table table-created-step1
+```
 
 Third, complete loading the HFiles into HBase table using HBase completebulkload tool.
-$ hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles outDir_fromStep2 TableName
 
+```
+$ hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles outDir_fromStep2 TableName
+```
 
 
 Extracting the Webgraph
