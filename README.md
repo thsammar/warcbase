@@ -70,6 +70,8 @@ $ hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles outDir_fromStep2
 ```
 
 
+
+
 Extracting the Webgraph
 -----------------------
 
