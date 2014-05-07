@@ -396,6 +396,15 @@
       <version>0.5.6-SNAPSHOT</version>
     </dependency-->
     <!-- End: jwat dependencies -->
-
+<dependency>
+<groupId>org.apache.pig</groupId>
+<artifactId>pig</artifactId>
+<version>0.11.1</version>
+</dependency>
+<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpcore</artifactId>
+	    <version>4.3</version>
+    </dependency>
   </dependencies>
 </project>
