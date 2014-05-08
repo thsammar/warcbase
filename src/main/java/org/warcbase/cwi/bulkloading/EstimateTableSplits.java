@@ -24,10 +24,10 @@ import org.warcbase.cwi.arcUtils.ArcRecord;
 import org.warcbase.data.Util;
 
 
-public class EstimaeTableSplits extends Configured implements Tool {
+public class EstimateTableSplits extends Configured implements Tool {
 
 	private static final Logger LOG = Logger
-			.getLogger(EstimaeTableSplits.class);
+			.getLogger(EstimateTableSplits.class);
 	private static final String ARGNAME_INPATH = "-in";
 	private static final String ARGNAME_OUTPATH = "-out";
 	private static final String ARGNAME_REDUCERS = "-reducers";
@@ -136,7 +136,7 @@ public class EstimaeTableSplits extends Configured implements Tool {
 				"-Xmx4096m -XX:-UseGCOverheadLimit");
 		Job job = new Job(conf);
 
-		job.setJarByClass(EstimaeTableSplits.class);
+		job.setJarByClass(EstimateTableSplits.class);
 		job.setNumReduceTasks(reducers);
 
 		// Scan the provided input path for ARC files.
@@ -164,8 +164,8 @@ public class EstimaeTableSplits extends Configured implements Tool {
 		job.setMapOutputValueClass(IntWritable.class);
 
 		// Set which Mapper and Reducer classes to use.
-		job.setMapperClass(EstimaeTableSplits.myMapper.class);
-		job.setReducerClass(EstimaeTableSplits.myReducer.class);
+		job.setMapperClass(EstimateTableSplits.myMapper.class);
+		job.setReducerClass(EstimateTableSplits.myReducer.class);
 
 		if (job.waitForCompletion(true)) {
 			return 0;
@@ -179,7 +179,7 @@ public class EstimaeTableSplits extends Configured implements Tool {
 	 * example Hadoop job.
 	 */
 	public static void main(String[] args) throws Exception {
-		int res = ToolRunner.run(new Configuration(), new EstimaeTableSplits(),
+		int res = ToolRunner.run(new Configuration(), new EstimateTableSplits(),
 				args);
 		System.exit(res);
 	}
